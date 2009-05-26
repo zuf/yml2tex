@@ -102,6 +102,7 @@ options are:
 * **outline** *(boolean)* If an Outline/Table of contents should be generated. True if not specified.
 * **highlight\_style** *(string)* Pygments style for code highlighting. If not specified 'default' is used.
 * **outline_name** *(string)* Custom outline text. If not specified, 'Outline' is used.
+* **theme** *(string)* Theme to use. If not specified, 'Antibes' is used.
 
 Example:
 

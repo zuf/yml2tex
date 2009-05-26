@@ -163,7 +163,7 @@ def header(metas):
         out += "\usepackage{listings}\n"
         out += "\lstset{numbers=left}"
 
-    out += "\n\n\usetheme{Antibes}"
+    out += "\n\n\usetheme{%s}" % metas.get('theme', 'Antibes')
     out += "\n\setbeamertemplate{footline}[frame number]"
     out += "\n\usecolortheme{lily}"
     out += "\n\\beamertemplateshadingbackground{blue!5}{yellow!10}"
