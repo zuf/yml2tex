@@ -56,6 +56,9 @@ Each item can have other items associated.
 The script doesn't limit the depth of nested items, however LaTeX Beamer 
 does limit it up to three items.
 
+Note: The items that start with *+* sign will be displayed together with the
+frame title. All others will be displayed after a pause.
+
 Images
 ------
 

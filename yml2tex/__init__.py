@@ -86,14 +86,24 @@ def itemize(items):
     The script itself doesn't limit the depth of nested lists. LaTeX Beamer 
     limits lists to be nested up to a depth of 3.
     """
-    out = "\n\t\\begin{itemize}[<+-| alert@+>]"
+    out = "\n\t\\begin{itemize}"
     for item in items:
         if isinstance(item, list):
             for i in item:
-                out += "\n\t\\item %s" % _escape_output(item[0][0])
+                if item[0][0].startswith('+'):
+                    alert = ""
+                    item[0][0] = item[0][0][1:]
+                else:
+                    alert = "<+-| alert@+>"
+                out += "\n\t\\item %s %s" % (alert, _escape_output(item[0][0]))
                 out += itemize(item[0][1])
         else:
-            out += "\n\t\\item %s" % _escape_output(item)
+            if item.startswith('+'):
+                alert = ""
+                item = item[1:]
+            else:
+                alert = "<+-| alert@+>"
+            out += "\n\t\\item %s %s" % (alert, _escape_output(item))
     out += "\n\t\end{itemize}"
     return out
 
