@@ -143,11 +143,15 @@ def image(title, options):
     path, return the LaTeX command to include the image.
     """
     if not options:
-        options = ""
-    options = ",".join(["%s=%s" % (k, v) for k, v in dict(options).items()])
+        options = {}
+    else:
+        options = dict(options)
+    params = ",".join(["%s=%s" % (k, v) for k, v in options.items() if k != "title"])
     
     out = "\n\\frame[shrink] {"
-    out += "\n\t\\pgfimage[%s]{%s}" % (options, title.split(' ')[1])
+    if options.get("title"):
+        out += "\n\t\\frametitle{%s}" % options["title"]
+    out += "\n\t\\pgfimage[%s]{%s}" % (params, title.split(' ')[1])
     out += "\n}"
     return out
 

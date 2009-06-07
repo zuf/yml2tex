@@ -71,6 +71,7 @@ It's possible to create a frame with an image in it by using the
         image foo:
             width: 10cm
             height: 30cm
+	    title: Figure 1: example of a figure
 
 In the above example, two frames would be created that include 
 the *"bar"* and *"foo"* image.
@@ -86,6 +87,8 @@ options as of writing this are:
 * page
 * interpolate
 * mask
+
+If option *title* is set, its content will be used as frame title.
 
 If no options are specified, the image will be the same size as the frame.
 
