@@ -92,10 +92,11 @@ def itemize(items):
             for i in item:
                 if item[0][0].startswith('+'):
                     alert = ""
-                    item[0][0] = item[0][0][1:]
+                    item_content = item[0][0][1:]
                 else:
                     alert = "<+-| alert@+>"
-                out += "\n\t\\item %s %s" % (alert, _escape_output(item[0][0]))
+                    item_content = item[0][0]
+                out += "\n\t\\item %s %s" % (alert, _escape_output(item_content))
                 out += itemize(item[0][1])
         else:
             if item.startswith('+'):
