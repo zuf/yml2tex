@@ -67,7 +67,6 @@ def frame(title, items):
 def _escape_output(text):
     """Escape special characters in Latex"""
     dic = {'&': '\&', 
-           '$': '\$', 
            '%': '\%', 
            '#': '\#', 
            '_': '\_', }
