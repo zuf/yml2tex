@@ -167,7 +167,15 @@ def animate(title, options):
         options = {}
     else:
         options = dict(options)
-    params = ",".join(["%s=%s" % (k, v) for k, v in options.items() if k != "title"])
+    params=[]
+    for k, v in options.items():
+        if k == 'title':
+            continue
+        if v:
+            params.append("%s=%s" % (k, v))
+        else:
+            params.append(k)
+    params = ",".join(params)
 
     out = "\n\\frame[shrink] {"
     if options.get("title"):
