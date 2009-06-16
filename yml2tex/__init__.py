@@ -181,7 +181,7 @@ def animate(title, options):
     if options.get("title"):
         out += "\n\t\\frametitle{%s}" % options["title"]
     anim_params = title.split(' ')
-    out += "\n\t\\animategraphics[%s]{%s}{%s}{%s}{%s}" % (params, anim_params[0], anim_params[1], anim_params[2], anim_params[3])
+    out += "\n\t\\animategraphics[%s]{%s}{%s}{%s}{%s}" % (params, anim_params[1], anim_params[2], anim_params[3], anim_params[4])
     out += "\n}"
     return out
 
