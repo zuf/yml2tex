@@ -57,6 +57,8 @@ def frame(title, items):
         out = code(title)
     elif title.startswith('image'):
         out = image(title, items)
+    elif title.startswith('animate'):
+        out = animate(title, items)
     else:
         out = "\n\\frame {"
         out += "\n\t\\frametitle{%s}" % _escape_output(title)
@@ -146,11 +148,32 @@ def image(title, options):
     else:
         options = dict(options)
     params = ",".join(["%s=%s" % (k, v) for k, v in options.items() if k != "title"])
-    
+
     out = "\n\\frame[shrink] {"
     if options.get("title"):
         out += "\n\t\\frametitle{%s}" % options["title"]
     out += "\n\t\\pgfimage[%s]{%s}" % (params, title.split(' ')[1])
+    out += "\n}"
+    return out
+
+def animate(title, options):
+    """
+    Given a frame title, which starts with "animate" and is followed by the animation
+    path, return the LaTeX command to include the animation.
+
+    Correct syntax is "animate" "FPS" "animation directory" "first frame" "number of frames"
+    """
+    if not options:
+        options = {}
+    else:
+        options = dict(options)
+    params = ",".join(["%s=%s" % (k, v) for k, v in options.items() if k != "title"])
+
+    out = "\n\\frame[shrink] {"
+    if options.get("title"):
+        out += "\n\t\\frametitle{%s}" % options["title"]
+    anim_params = title.split(' ')
+    out += "\n\t\\animategraphics[%s]{%s}{%s}{%s}{%s}" % (params, anim_params[0], anim_params[1], anim_params[2], anim_params[3])
     out += "\n}"
     return out
 
@@ -166,6 +189,8 @@ def header(metas):
     if metas.get('tex_fontenc'):
         out += "\n\usepackage[%s]{fontenc}" % metas['tex_fontenc']
     out += "\n\usepackage{fancyvrb,color}\n\n"
+    if metas.get('tex_animate'):
+        out += "\n\usepackage{animate}"
     if metas.get('tex_packages'):
         packages = metas['tex_packages'].split(',')
         for package in packages:

@@ -92,6 +92,39 @@ If option *title* is set, its content will be used as frame title.
 
 If no options are specified, the image will be the same size as the frame.
 
+Animations
+----------
+
+It's possible to use animations by creating a series of frames, using animate
+latex package. For this, it is necessary to split a movie into a series of
+frames (for example, by using *convert* utility from *ImageMagick*
+application), and specify the desired *FPS*, *Frames location*,
+*First Frame* and the *Last frame* of the animation.
+
+    Features:
+      Animations:
+        animation 30 bar 0 71:
+        animation 24 foo- 0 11:
+            width: 10cm
+	    title: Animation 1: example of animation
+
+In the above example, two frames would be created that include
+the *"bar"* and *"foo"* image. The *"bar"* image would have 72
+frames (from 0 to 71), located in *bar0*, *bar1*, ..., *bar71* files,
+and *"foo"* image would have *12* frames, located in *foo-0*,
+*foo-1*, ..., *foo-11* files.
+
+Options will be passed directly to the \pgfimage command, the supported
+options as of writing this are:
+
+* width
+* loop
+* autoplay
+
+If option *title* is set, its content will be used as frame title.
+
+If no options are specified, the image will be the same size as the frame.
+
 Metadata
 --------
 
