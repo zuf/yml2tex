@@ -109,6 +109,7 @@ options are:
 * **highlight\_style** *(string)* Pygments style for code highlighting. If not specified 'default' is used.
 * **outline_name** *(string)* Custom outline text. If not specified, 'Outline' is used.
 * **theme** *(string)* Theme to use. If not specified, 'Antibes' is used.
+* **tex_packages** *(string)* List of packages to include in Latex preambule, separated by commas.
 
 Example:
 

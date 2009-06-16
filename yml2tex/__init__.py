@@ -166,6 +166,10 @@ def header(metas):
     if metas.get('tex_fontenc'):
         out += "\n\usepackage[%s]{fontenc}" % metas['tex_fontenc']
     out += "\n\usepackage{fancyvrb,color}\n\n"
+    if metas.get('tex_packages'):
+        packages = metas['tex_packages'].split(',')
+        for package in packages:
+            out += "\n\usepackage{%s}" % package
     
     # generate style definitions for pygments syntax highlighting
     try:
