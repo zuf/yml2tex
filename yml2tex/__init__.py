@@ -169,7 +169,7 @@ def header(metas):
     if metas.get('tex_packages'):
         packages = metas['tex_packages'].split(',')
         for package in packages:
-            out += "\n\usepackage{%s}" % package
+            out += "\n\usepackage{%s}\n" % package
     
     # generate style definitions for pygments syntax highlighting
     try:
