@@ -70,8 +70,7 @@ def _escape_output(text):
     """Escape special characters in Latex"""
     dic = {'&': '\&', 
            '%': '\%', 
-           '#': '\#', 
-           '_': '\_', }
+           '#': '\#', }
     
     for i, j in dic.iteritems():  
         text = text.replace(i, j)
