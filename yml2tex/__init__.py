@@ -70,6 +70,7 @@ def _escape_output(text):
     """Escape special characters in Latex"""
     dic = {'&': '\&', 
            '%': '\%', 
+           '_': '\_', 
            '#': '\#', }
     
     for i, j in dic.iteritems():  
@@ -92,7 +93,7 @@ def itemize(items):
                     alert = ""
                     item_content = item[0][0][1:]
                 else:
-                    alert = "<+-| alert@+>"
+                    alert = "" #"<+-| alert@+>"
                     item_content = item[0][0]
                 out += "\n\t\\item %s %s" % (alert, _escape_output(item_content))
                 out += itemize(item[0][1])
@@ -101,7 +102,7 @@ def itemize(items):
                 alert = ""
                 item = item[1:]
             else:
-                alert = "<+-| alert@+>"
+                alert = "" #"<+-| alert@+>"
             out += "\n\t\\item %s %s" % (alert, _escape_output(item))
     out += "\n\t\end{itemize}"
     return out
@@ -115,7 +116,7 @@ def code(title):
     # open the code file relative from the yml file path
     f = open(os.path.join(os.path.dirname(os.path.abspath(source_file)), filename))
     
-    out = "\n\\begin{frame}[fragile,t]"
+    out = "\n\\begin{frame}[shrink,fragile,t]"
     out += "\n\t\\frametitle{Code: \"%s\"}" % filename
     
     try:
