@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 """
 Transform a YAML file into a LaTeX Beamer presentation.
